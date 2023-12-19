@@ -1,37 +1,51 @@
 import { Request, Response } from "express";
-const express = require('express')
+import { getRooms, getRoomById, getRoomsAvailable, getRoomsBooked } from "../services/room";
 
+const express = require('express')
 const router = express.Router()
 
 router.get('/rooms', (req : Request,res : Response) => {
-
-    res.send('rooms')
-})
-
-router.get('/rooms/:id', (req: Request, res: Response) => {
-    res.send('una room')
+    
+    res.setHeader('Content-Type', 'application/json')
+    res.send(getRooms());
 })
 
 router.get('/rooms/available', (req : Request,res : Response) => {
-
-    res.send('Available rooms')
+    res.setHeader('Content-Type', 'application/json')
+    res.send(getRoomsAvailable())
 })
 
 router.get('/rooms/booked', (req : Request,res : Response) => {
+    res.setHeader('Content-Type', 'application/json')
+    res.send(getRoomsBooked())
+})
 
-    res.send('Booked rooms')
+router.get('/rooms/:id', (req: Request, res: Response) => {
+
+    res.setHeader('Content-Type', 'application/json')
+    
+    if(getRoomById(req.params.id)){
+        res.send(getRoomById(req.params.id))
+    }
+    else {
+        res.status(406).send('No se encuentra esa habitación')
+    }
+    
 })
 
 router.post('/rooms', (req: Request, res: Response) => {
-    res.send('Crear room')
+    
+    res.send('Habitación añadida correctamente')
 })
 
 router.delete('/rooms', (req: Request, res: Response) => {
-    res.send('Eliminar room')
+
+    res.send('Habitación eliminada correctamente')
 })
 
 router.patch('/rooms', (req: Request, res: Response) => {
-    res.send('Actualizar algun atributo de room')
+
+    res.send('Habitación actualizada correctamente')
 })
 
 export default router

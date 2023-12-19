@@ -1,41 +1,47 @@
 import { Request, Response } from "express";
+import { getArchivedContact, getContactById, getContacts, getPublishedContact } from "../services/contact";
 const express = require('express')
 
 const router = express.Router()
 
 router.get('/contacts', (req: Request, res: Response) => {
 
-    res.send('contacts')
+    res.send(getContacts())
 })
 
 router.get('/contacts/:id', (req: Request, res: Response) => {
 
-    res.send('un contact')
+    if(getContactById(req.params.id)){
+        res.send(getContactById(req.params.id))
+    }
+    else {
+        res.status(406).send('No existe el review con ese id')
+    }
 })
 
 router.get('/contacts/published', (req: Request, res: Response) => {
 
-    res.send('published contacts')
+    res.send(getPublishedContact())
 })
 
 router.get('/contacts/archived', (req: Request, res: Response) => {
 
-    res.send('archived contacts')
+    res.send(getArchivedContact())
 })
 
 router.post('/contacts', (req: Request, res: Response) => {
 
-    res.send('añadir un review')
+    res.send('Nuevo review añadido correctamente')
 })
 
 router.patch('/contacts/:id/archive', (req: Request, res: Response) => {
 
-    res.send('archivar review')
+    res.send('Review archivado')
 })
 
 router.patch('/contacts/:id/published', (req: Request, res: Response) => {
 
-    res.send('publicar review')
+    res.send('Review publicado')
 })
 
 

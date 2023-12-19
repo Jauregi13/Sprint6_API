@@ -1,10 +1,10 @@
 
 
 
-export interface Contact {
+export interface ContactInterface {
 
     id: string
-    date: Date
+    date: string
     customer: string
     comment: string
 

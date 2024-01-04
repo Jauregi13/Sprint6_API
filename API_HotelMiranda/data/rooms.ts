@@ -2,7 +2,7 @@
 
 export const rooms = [
     {
-    "id": "#1001",
+    "id": "1001",
     "room_type": "Single Bed",
     "room_number": "Deluxe A-91234",
     "description": "Habitación individual con todas las comodidades necesarias para una estancia confortable.",
@@ -13,7 +13,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1002",
+    "id": "1002",
     "room_type": "Double Bed",
     "room_number": "Double B-82456",
     "description": "Habitación con cama doble perfecta para parejas.",
@@ -24,7 +24,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1003",
+    "id": "1003",
     "room_type": "Double Superior",
     "room_number": "Superior C-73521",
     "description": "Habitación doble con espacio adicional y vistas panorámicas.",
@@ -35,7 +35,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1004",
+    "id": "1004",
     "room_type": "Suite",
     "room_number": "Suite D-64238",
     "description": "Suite de lujo con todas las comodidades y un diseño exclusivo.",
@@ -46,7 +46,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1005",
+    "id": "1005",
     "room_type": "Single Bed",
     "room_number": "Standard E-50789",
     "description": "Habitación individual con estilo moderno y cómodo.",
@@ -57,7 +57,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1006",
+    "id": "1006",
     "room_type": "Double Bed",
     "room_number": "Double F-41123",
     "description": "Amplia habitación con cama doble y ambiente acogedor.",
@@ -68,7 +68,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1007",
+    "id": "1007",
     "room_type": "Double Superior",
     "room_number": "Superior G-33345",
     "description": "Habitación doble con vistas panorámicas y servicios exclusivos.",
@@ -79,7 +79,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1008",
+    "id": "1008",
     "room_type": "Suite",
     "room_number": "Luxury H-21111",
     "description": "Suite lujosa con espacio amplio y detalles de alta gama.",
@@ -90,7 +90,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1009",
+    "id": "1009",
     "room_type": "Single Bed",
     "room_number": "Standard I-00999",
     "description": "Habitación individual con todas las comodidades necesarias.",
@@ -101,7 +101,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1010",
+    "id": "1010",
     "room_type": "Double Bed",
     "room_number": "Double J-20002",
     "description": "Habitación doble con diseño moderno y comodidades esenciales.",
@@ -112,7 +112,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1011",
+    "id": "1011",
     "room_type": "Double Superior",
     "room_number": "Superior K-30678",
     "description": "Habitación doble con espacio adicional y vistas panorámicas.",
@@ -123,7 +123,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1012",
+    "id": "1012",
     "room_type": "Suite",
     "room_number": "Suite L-45000",
     "description": "Suite de lujo con todas las comodidades y un diseño exclusivo.",
@@ -134,7 +134,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1013",
+    "id": "1013",
     "room_type": "Single Bed",
     "room_number": "Standard M-81234",
     "description": "Habitación individual con estilo moderno y cómodo.",
@@ -145,7 +145,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1014",
+    "id": "1014",
     "room_type": "Double Bed",
     "room_number": "Double N-71111",
     "description": "Amplia habitación con cama doble y ambiente acogedor.",
@@ -156,7 +156,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1015",
+    "id": "1015",
     "room_type": "Double Superior",
     "room_number": "Superior O-60001",
     "description": "Habitación doble con vistas panorámicas y servicios exclusivos.",
@@ -167,7 +167,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1016",
+    "id": "1016",
     "room_type": "Suite",
     "room_number": "Luxury P-45565",
     "description": "Suite lujosa con espacio amplio y detalles de alta gama.",
@@ -178,7 +178,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1017",
+    "id": "1017",
     "room_type": "Single Bed",
     "room_number": "Standard Q-33222",
     "description": "Habitación individual con todas las comodidades necesarias.",
@@ -189,7 +189,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1018",
+    "id": "1018",
     "room_type": "Double Bed",
     "room_number": "Double R-20010",
     "description": "Habitación doble con diseño moderno y comodidades esenciales.",
@@ -200,7 +200,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1019",
+    "id": "1019",
     "room_type": "Double Superior",
     "room_number": "Superior S-11234",
     "description": "Habitación doble con espacio adicional y vistas panorámicas.",
@@ -211,7 +211,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1020",
+    "id": "1020",
     "room_type": "Suite",
     "room_number": "Suite T-45001",
     "description": "Suite de lujo con todas las comodidades y un diseño exclusivo.",
@@ -222,7 +222,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1021",
+    "id": "1021",
     "room_type": "Single Bed",
     "room_number": "Standard U-81234",
     "description": "Habitación individual con estilo moderno y cómodo.",
@@ -233,7 +233,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1022",
+    "id": "1022",
     "room_type": "Double Bed",
     "room_number": "Double V-71111",
     "description": "Amplia habitación con cama doble y ambiente acogedor.",
@@ -244,7 +244,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1023",
+    "id": "1023",
     "room_type": "Double Superior",
     "room_number": "Superior W-60001",
     "description": "Habitación doble con vistas panorámicas y servicios exclusivos.",
@@ -255,7 +255,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1024",
+    "id": "1024",
     "room_type": "Suite",
     "room_number": "Luxury X-45565",
     "description": "Suite lujosa con espacio amplio y detalles de alta gama.",
@@ -266,7 +266,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1025",
+    "id": "1025",
     "room_type": "Single Bed",
     "room_number": "Standard Y-33222",
     "description": "Habitación individual con todas las comodidades necesarias.",
@@ -277,7 +277,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1026",
+    "id": "1026",
     "room_type": "Double Bed",
     "room_number": "Double Z-20010",
     "description": "Habitación doble con diseño moderno y comodidades esenciales.",
@@ -288,7 +288,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1027",
+    "id": "1027",
     "room_type": "Double Superior",
     "room_number": "Superior AA-11234",
     "description": "Habitación doble con espacio adicional y vistas panorámicas.",
@@ -299,7 +299,7 @@ export const rooms = [
     "status": "Booked"
     },
     {
-    "id": "#1028",
+    "id": "1028",
     "room_type": "Suite",
     "room_number": "Suite BB-45001",
     "description": "Suite de lujo con todas las comodidades y un diseño exclusivo.",
@@ -310,7 +310,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1029",
+    "id": "1029",
     "room_type": "Suite",
     "room_number": "Suite X-1029",
     "description": "Suite de lujo con vistas impresionantes y servicios exclusivos.",
@@ -321,7 +321,7 @@ export const rooms = [
     "status": "Available"
     },
     {
-    "id": "#1030",
+    "id": "1030",
     "room_type": "Single Bed",
     "room_number": "Deluxe Y-1030",
     "description": "Habitación individual con diseño moderno y todas las comodidades.",

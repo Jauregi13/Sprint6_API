@@ -1,16 +1,15 @@
 import { Request, Response } from "express";
-import { getRooms, getRoomById, getRoomsAvailable, getRoomsBooked } from "../services/room";
+import { getRooms, getRoomById, getRoomsAvailable, getRoomsBooked, addRoom, deleteRoom, updateRoom } from "../services/room";
 
 const express = require('express')
 const router = express.Router()
 
-router.get('/rooms', (req : Request,res : Response) => {
+router.get('/rooms', async (req : Request,res : Response) => {
     
-    res.setHeader('Content-Type', 'application/json')
-    res.send(getRooms());
+    res.json(await getRooms());
 })
 
-router.get('/rooms/available', (req : Request,res : Response) => {
+/*router.get('/rooms/available', (req : Request,res : Response) => {
     res.setHeader('Content-Type', 'application/json')
     res.send(getRoomsAvailable())
 })
@@ -18,14 +17,13 @@ router.get('/rooms/available', (req : Request,res : Response) => {
 router.get('/rooms/booked', (req : Request,res : Response) => {
     res.setHeader('Content-Type', 'application/json')
     res.send(getRoomsBooked())
-})
+})*/
 
-router.get('/rooms/:id', (req: Request, res: Response) => {
+router.get('/rooms/:id', async (req: Request, res: Response) => {
 
-    res.setHeader('Content-Type', 'application/json')
-    
-    if(getRoomById(req.params.id)){
-        res.send(getRoomById(req.params.id))
+    const roomId = await getRoomById(req.params.id)
+    if(roomId){
+        res.json(roomId)
     }
     else {
         res.status(406).send('No se encuentra esa habitación')
@@ -33,19 +31,56 @@ router.get('/rooms/:id', (req: Request, res: Response) => {
     
 })
 
-router.post('/rooms', (req: Request, res: Response) => {
+router.post('/rooms', async (req: Request, res: Response) => {
+
+    try {
+        await addRoom(req.body)
     
-    res.send('Habitación añadida correctamente')
+        res.send('Habitación añadida correctamente')
+    } catch (error) {
+        res.status(500).send('Error al añadir habitación');
+    }
+    
 })
 
-router.delete('/rooms', (req: Request, res: Response) => {
+router.delete('/rooms', async (req: Request, res: Response) => {
 
-    res.send('Habitación eliminada correctamente')
+    try {
+
+        const roomDeleted = await deleteRoom(req.body.id)
+
+        if(roomDeleted != null){
+            res.send('Habitación eliminada correctamente')
+        }
+        else {
+            res.send('No se encuentra el id de habitación')
+        }
+        
+    } catch (error) {
+        res.status(500).send('Error al eliminar la habitación');
+    }
+
+    
 })
 
-router.patch('/rooms', (req: Request, res: Response) => {
+router.patch('/rooms', async (req: Request, res: Response) => {
 
-    res.send('Habitación actualizada correctamente')
+    try {
+
+        const roomUpdated = await updateRoom(req.body)
+        
+        if(roomUpdated != null){
+            res.send('Habitación actualizada correctamente')
+        }
+        else {
+            res.send('No se encuentra el id de habitación')
+        }
+        
+    } catch (error) {
+        res.status(500).send('Error al actualizar la habitación');
+    }
+
+    
 })
 
 export default router

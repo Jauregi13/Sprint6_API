@@ -1,23 +1,66 @@
-import { RoomInterface } from '../models/Room'
-import { rooms } from './../data/rooms'
+import { log } from 'console'
+import { Room, RoomInterface } from '../models/Room'
 
+export const getRooms = async () => {
 
-export const getRooms = () : RoomInterface[] => {
-
-    return rooms
+    return  await Room.find().exec()
 }
 
-export const getRoomById = (id: string) : RoomInterface | undefined => {
+export const getRoomById = async (id: string) => {
     
-    return rooms.find((room) => room.id.slice(1,room.id.length) === id)
+    return await Room.findOne({id: id}).exec()
 }
 
-export const getRoomsAvailable = () : RoomInterface[] => {
+export const getRoomsAvailable = async () => {
 
-    return rooms.filter((room) => room.status === 'Available')
+    //return rooms.filter((room) => room.status === 'Available')
 }
 
-export const getRoomsBooked = () : RoomInterface[] => {
+export const getRoomsBooked = async () => {
 
-    return rooms.filter((room) => room.status === 'Booked')
+    //return rooms.filter((room) => room.status === 'Booked')
+}
+
+export const addRoom = async (room: RoomInterface) => {
+
+    try {
+
+        const newRoom = new Room(room)
+
+        await newRoom.save()
+
+        console.log('Habitacion guardada');
+        
+        
+    } catch (error) {
+        console.error('Error al guardar')
+    }
+    
+
+}
+
+export const deleteRoom = async (id: string) => {
+
+    try {
+
+        return await Room.findOneAndDelete({id: id})
+        
+    } catch (error) {
+        
+        console.error('Error al borrar la habitación');
+        
+    } 
+}
+
+export const updateRoom = async (room: RoomInterface) => {
+
+    try {
+                
+        return await Room.findOneAndUpdate({id: room.id}, {room_type : room.room_type})
+        
+    } catch (error) {
+        
+        console.error('Error al borrar la habitación');
+        
+    } 
 }

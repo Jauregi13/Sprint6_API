@@ -1,6 +1,7 @@
 
+import mongoose from "mongoose"
 
-export interface RoomInterface {
+export interface RoomInterface extends mongoose.Document {
 
     id: string
     room_type: string
@@ -13,3 +14,19 @@ export interface RoomInterface {
     status: string
 
 }
+
+const RoomSchema = new mongoose.Schema({
+
+    id: String,
+    room_type: String,
+    room_number: String,
+    description: String,
+    amenities: [String],
+    cancellation: String,
+    price: Number,
+    offer: Number,
+    status: String,
+
+})
+
+export const Room =  mongoose.model<RoomInterface>('Room', RoomSchema)

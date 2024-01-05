@@ -1,23 +1,26 @@
 
-import { contacts } from "../data/contacts";
-import { ContactInterface } from "../models/Contact";
+import { Contact, ContactInterface } from "../models/Contact";
 
-export const getContacts = () : ContactInterface[] => {
-    return contacts
+export const getContacts = async () => {
+
+
+    return Contact.find().exec()
 }
 
-export const getContactById = (id : string) : ContactInterface | undefined => {
+export const getContactById = (id : string) => {
 
-    return contacts.find((contact) => contact.id === id)
+    return Contact.findOne({id: id}).exec()
 }
 
-export const getPublishedContact = () : ContactInterface[] => {
+export const addReview = async (review: ContactInterface) => {
 
-    return contacts.filter((contact) => contact.status === 'published')
+    await Contact.create(review)
+
 }
 
-export const getArchivedContact = () : ContactInterface[] => {
+export const updateReview = async (review : ContactInterface) => {
 
-    return contacts.filter((contact) => contact.status === 'archived')
+    return await Contact.findOneAndUpdate({id: review.id},{status: review.status})
+
 }
 

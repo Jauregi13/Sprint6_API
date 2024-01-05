@@ -1,27 +1,40 @@
-import { BookingInterface } from "../models/Booking"
-import { bookings } from "../data/bookings"
+import { Booking, BookingInterface } from "../models/Booking"
+import { getRoomById } from "./room"
 
-export const getBookings = () : BookingInterface[] => {
+export const getBookings = async ()=> {
 
-    return bookings
+    return await Booking.find().exec()
 }
 
-export const getBookingById = (id: string) : BookingInterface | undefined=> {
+export const getBookingById = async (id: string) => {
 
-    return bookings.find((booking) => booking.id === id)
+    return await Booking.findOne({id: id}).populate('room_type').exec()
 }
 
-export const getBookingsCheckIn = () : BookingInterface[] => {
+export const addBooking = async (booking: BookingInterface) => {
 
-    return bookings.filter((booking) => booking.status === 'Check In')
+    const roomExist = await getRoomById(booking.room_type)
+    
+    if(roomExist != null){
+        console.log('funciona');
+        
+        await Booking.create(booking)
+    }
+    else {
+        console.log('prueba');
+        
+        throw new Error('Ese numero de habitación no existe')
+    }
+    
+
 }
 
-export const getBookingsCheckOut = () : BookingInterface[] => {
+export const deleteBooking = async (id: string) => {
 
-    return bookings.filter((booking) => booking.status === 'Check Out')
+    return await Booking.findOneAndDelete({id: id})
 }
 
-export const getBookingsInProgress = () : BookingInterface[] => {
+export const updateBooking = async (booking: BookingInterface) => {
 
-    return bookings.filter((booking) => booking.status === 'In Progress')
+    return await Booking.findOneAndUpdate({id: booking.id}, booking)
 }

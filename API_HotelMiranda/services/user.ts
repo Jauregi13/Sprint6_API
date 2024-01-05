@@ -1,18 +1,18 @@
-import { UserInterface } from "../models/User";
+import { User, UserInterface } from "../models/User";
 import { users } from "../data/users";
 
 
-export const getUsers = () : UserInterface[] => {
+export const getUsers = async () => {
 
-    return users
+    return await User.find().exec()
 }
 
-export const getUserById = (id: string) : UserInterface | undefined => {
+export const getUserById = async (id: string) => {
 
-    return users.find((user) => user.id === id)
+    return await User.findOne({id: id}).exec()
 }
 
-export const getActiveUsers = () : UserInterface[] => {
+/*export const getActiveUsers = () : UserInterface[] => {
 
     return users.filter((user) => user.status === 'ACTIVE')
 }
@@ -20,4 +20,28 @@ export const getActiveUsers = () : UserInterface[] => {
 export const getInactiveUsers = () : UserInterface[] => {
 
     return users.filter((user) => user.status === 'INACTIVE')
+}*/
+
+export const addUser = async (user: UserInterface) => {
+
+
+        const newUser = new User(user)
+
+        await newUser.save()
+
+}
+
+export const deleteUser = async (id: string) => {
+
+
+    return await User.findOneAndDelete({id: id})
+
+
+}
+
+export const updateUser = async (user: UserInterface) => {
+    
+    return await User.findOneAndUpdate({id:user.id},user)
+
+
 }

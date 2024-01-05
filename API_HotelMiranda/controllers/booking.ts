@@ -1,20 +1,20 @@
 import { Request, Response } from "express";
-import { getBookingById, getBookings, getBookingsCheckIn, getBookingsCheckOut, getBookingsInProgress } from "../services/booking";
+import { addBooking, deleteBooking, getBookingById, getBookings, updateBooking } from "../services/booking";
 const express = require('express')
 
 const router = express.Router()
 
-router.get('/bookings', (req : Request,res : Response) => {
+router.get('/bookings', async (req : Request,res : Response) => {
 
-    res.setHeader('Content-Type', 'application/json')
-    res.send(getBookings())
+    res.json(await getBookings())
 })
 
-router.get('/bookings/:id', (req : Request,res : Response) => {
+router.get('/bookings/:id', async (req : Request,res : Response) => {
 
-    res.setHeader('Content-Type', 'application/json')
-    if(getBookingById(req.params.id)){
-        res.send(getBookingById(req.params.id))
+    const booking = await getBookingById(req.params.id)
+
+    if(booking){
+        res.json(booking)
     }
     else {
         res.status(406).send('No existe ninguna reserva con ese id')
@@ -23,7 +23,7 @@ router.get('/bookings/:id', (req : Request,res : Response) => {
     
 })
 
-router.get('/bookings/checkIn', (req : Request,res : Response) => {
+/*router.get('/bookings/checkIn', (req : Request,res : Response) => {
 
     res.setHeader('Content-Type', 'application/json')
     res.send(getBookingsCheckIn())
@@ -39,21 +39,61 @@ router.get('/bookings/inProgress', (req : Request,res : Response) => {
 
     res.setHeader('Content-Type', 'application/json')
     res.send(getBookingsInProgress())
+})*/
+
+router.post('/bookings', async (req : Request,res : Response) => {
+
+    try {
+
+        await addBooking(req.body)
+
+        res.send('Reserva creada correctamente')
+        
+    } catch (error) {
+        res.status(500).send(error);
+    }
+    
 })
 
-router.post('/bookings', (req : Request,res : Response) => {
+router.delete('/bookings', async (req : Request,res : Response) => {
 
-    res.send('Reserva creada correctamente')
+    try {
+
+        const bookingDeleted = await deleteBooking(req.body.id)
+
+        if(bookingDeleted){
+            res.send('Reserva eliminada correctamente')
+        }
+        else {
+            res.send('Id de reserva no existe')
+        }
+        
+        
+    } catch (error) {
+        res.status(500).send('Error al eliminar la reserva')
+    }
+
+    
 })
 
-router.delete('/bookings', (req : Request,res : Response) => {
+router.patch('/bookings', async (req : Request,res : Response) => {
 
-    res.send('Reserva eliminada correctamente')
-})
+    try {
 
-router.patch('/bookings', (req : Request,res : Response) => {
+        const bookingUpdated = await updateBooking(req.body)
 
-    res.send('Reserva actualizada correctamente')
+        if(bookingUpdated){
+            res.send('Reserva actualizada correctamente')
+        }
+        else {
+            res.send('Id de reserva no existe')
+        }
+        
+    } catch (error) {
+        res.status(500).send('Error al actualizar la reserva')
+    }
+
+    
 })
 
 export default router

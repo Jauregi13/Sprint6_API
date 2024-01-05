@@ -2,7 +2,7 @@
 
 export const bookings = [
     {
-    "id": "#100001",
+    "id": "100001",
     "guest": "Juan Pérez",
     "order_date": "2023-10-01",
     "check_in": "2023-11-05",
@@ -12,7 +12,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100002",
+    "id": "100002",
     "guest": "María García",
     "order_date": "2023-10-03",
     "check_in": "2023-11-08",
@@ -22,7 +22,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100003",
+    "id": "100003",
     "guest": "Laura Martínez",
     "order_date": "2023-10-05",
     "check_in": "2023-11-10",
@@ -32,7 +32,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100004",
+    "id": "100004",
     "guest": "Carlos Rodríguez",
     "order_date": "2023-10-08",
     "check_in": "2023-11-15",
@@ -42,7 +42,7 @@ export const bookings = [
     "status": "Check In"
     },
     {
-    "id": "#100005",
+    "id": "100005",
     "guest": "Ana Gómez",
     "order_date": "2023-10-10",
     "check_in": "2023-11-20",
@@ -52,7 +52,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100006",
+    "id": "100006",
     "guest": "Pedro Sánchez",
     "order_date": "2023-10-12",
     "check_in": "2023-11-25",
@@ -62,7 +62,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100007",
+    "id": "100007",
     "guest": "Marina López",
     "order_date": "2023-10-15",
     "check_in": "2023-12-01",
@@ -72,7 +72,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100008",
+    "id": "100008",
     "guest": "Javier Martínez",
     "order_date": "2023-10-18",
     "check_in": "2023-12-05",
@@ -82,7 +82,7 @@ export const bookings = [
     "status": "Check In"
     },
     {
-    "id": "#100009",
+    "id": "100009",
     "guest": "Sofía García",
     "order_date": "2023-10-20",
     "check_in": "2023-12-10",
@@ -92,7 +92,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100010",
+    "id": "100010",
     "guest": "Diego Pérez",
     "order_date": "2023-10-22",
     "check_in": "2023-12-15",
@@ -102,7 +102,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100011",
+    "id": "100011",
     "guest": "Lucía Rodríguez",
     "order_date": "2023-10-25",
     "check_in": "2023-12-20",
@@ -112,7 +112,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100012",
+    "id": "100012",
     "guest": "Martín Gómez",
     "order_date": "2023-10-28",
     "check_in": "2023-12-25",
@@ -122,7 +122,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100013",
+    "id": "100013",
     "guest": "Valeria Sánchez",
     "order_date": "2023-10-30",
     "check_in": "2023-12-30",
@@ -132,7 +132,7 @@ export const bookings = [
     "status": "Check In"
     },
     {
-    "id": "#100014",
+    "id": "100014",
     "guest": "Luisa López",
     "order_date": "2023-11-02",
     "check_in": "2024-01-05",
@@ -142,7 +142,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100015",
+    "id": "100015",
     "guest": "Gabriel Martínez",
     "order_date": "2023-11-05",
     "check_in": "2024-01-10",
@@ -152,7 +152,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100016",
+    "id": "100016",
     "guest": "Carolina García",
     "order_date": "2023-11-08",
     "check_in": "2024-01-15",
@@ -162,7 +162,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100017",
+    "id": "100017",
     "guest": "Andrés Pérez",
     "order_date": "2023-11-10",
     "check_in": "2024-01-20",
@@ -172,7 +172,7 @@ export const bookings = [
     "status": "Check In"
     },
     {
-    "id": "#100018",
+    "id": "100018",
     "guest": "Camila Rodríguez",
     "order_date": "2023-11-12",
     "check_in": "2024-01-25",
@@ -182,7 +182,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100019",
+    "id": "100019",
     "guest": "Emilio Gómez",
     "order_date": "2023-11-15",
     "check_in": "2024-01-30",
@@ -192,7 +192,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100020",
+    "id": "100020",
     "guest": "Sara Sánchez",
     "order_date": "2023-11-18",
     "check_in": "2024-02-05",
@@ -202,7 +202,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100021",
+    "id": "100021",
     "guest": "Daniel López",
     "order_date": "2023-11-20",
     "check_in": "2024-02-10",
@@ -212,7 +212,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100022",
+    "id": "100022",
     "guest": "Isabella Martínez",
     "order_date": "2023-11-22",
     "check_in": "2024-02-15",
@@ -222,7 +222,7 @@ export const bookings = [
     "status": "Check Out"
     },
     {
-    "id": "#100023",
+    "id": "100023",
     "guest": "Marcos García",
     "order_date": "2023-11-25",
     "check_in": "2024-02-20",
@@ -232,7 +232,7 @@ export const bookings = [
     "status": "Check In"
     },
     {
-    "id": "#100024",
+    "id": "100024",
     "guest": "Valentina Pérez",
     "order_date": "2023-11-28",
     "check_in": "2024-02-25",
@@ -242,7 +242,7 @@ export const bookings = [
     "status": "In Progress"
     },
     {
-    "id": "#100025",
+    "id": "100025",
     "guest": "Lucas Rodríguez",
     "order_date": "2023-11-30",
     "check_in": "2024-02-29",

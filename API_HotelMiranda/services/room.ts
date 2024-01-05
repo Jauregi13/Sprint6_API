@@ -1,4 +1,3 @@
-import { log } from 'console'
 import { Room, RoomInterface } from '../models/Room'
 
 export const getRooms = async () => {

@@ -1,25 +1,24 @@
 
 import mongoose from "mongoose"
 
-export interface ContactInterface extends mongoose.Document{
+export interface ContactInterface {
 
-    id: string
-    date: string
+    reviewId: string
+    date: Date
     customer: string
     comment: string
-    status: string
+    published: boolean
 
 }
 
 const ContactSchema = new mongoose.Schema({
 
-    id: String,
+    reviewId: String,
     date: Date,
     customer: String,
     comment: String,
-    status: {
-        type: String,
-        enum: ['published','archived']
+    published: {
+        type: Boolean,
     }
 })
 

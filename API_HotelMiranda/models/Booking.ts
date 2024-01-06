@@ -1,29 +1,32 @@
 
 import mongoose from "mongoose"
-import { Room } from "./Room"
+import { Room, RoomInterface } from "./Room"
 
-export interface BookingInterface extends mongoose.Document{
+export interface BookingInterface {
 
-    id: string
+    bookingId: string
     guest: string
-    order_date: string
-    check_in: string
-    check_out: string
+    order_date: Date
+    check_in: Date
+    check_out: Date
     special_request: string
-    room_type: string
+    room_type: mongoose.Types.ObjectId
     status: string
 
 }
 
 const BookingSchema = new mongoose.Schema({
 
-    id: String,
+    bookingId: String,
     guest: String,
     order_date: Date,
     check_in: Date,
     check_out: Date,
     special_request: String,
-    room_type: String,
+    room_type: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Room'
+    },
     status: {
         type: String,
         enum: ['Check In', 'Check Out', 'In Progress']

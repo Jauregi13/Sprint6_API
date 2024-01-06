@@ -2,28 +2,27 @@
 import mongoose from "mongoose"
 
 
-export interface UserInterface extends mongoose.Document{
+export interface UserInterface {
 
-    id: string
+    userId: string
     name: string
     email: string
-    start_date: string
+    start_date: Date
     description: string
     contact: string
-    status: string
+    active: boolean
 }
 
 const UserSchema = new mongoose.Schema({
 
-    id: String,
+    userId: String,
     name: String,
     email: String,
     start_date: Date,
     description: String,
     contact: String,
-    status: {
-        type: String,
-        enum: ['ACTIVE', 'INACTIVE']
+    active: {
+        type: Boolean
     }
 
 })

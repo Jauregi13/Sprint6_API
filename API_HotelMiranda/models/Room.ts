@@ -1,9 +1,9 @@
 
 import mongoose from "mongoose"
 
-export interface RoomInterface extends mongoose.Document {
+export interface RoomInterface{
 
-    id: string
+    roomId: string
     room_type: string
     room_number: string
     description: string
@@ -11,13 +11,13 @@ export interface RoomInterface extends mongoose.Document {
     cancellation: string
     price: number
     offer: number
-    status: string
+    available: boolean
 
 }
 
 const RoomSchema = new mongoose.Schema({
 
-    id: String,
+    roomId: String,
     room_type: String,
     room_number: String,
     description: String,
@@ -25,7 +25,7 @@ const RoomSchema = new mongoose.Schema({
     cancellation: String,
     price: Number,
     offer: Number,
-    status: String,
+    available: Boolean
 
 })
 

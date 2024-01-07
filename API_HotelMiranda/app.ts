@@ -6,10 +6,13 @@ import loginRouter from './middleware/auth'
 import { Request, Response } from 'express'
 import listEndpoints from 'express-list-endpoints'
 import { authenticateToken } from './services/login'
+import ServerlessHttp from 'serverless-http'
 
 
 const express = require('express')
 export const app = express()
+const dotenv = require('dotenv')
+dotenv.config({ path: `.env.local`, override: true })
 
 
 
@@ -29,6 +32,7 @@ app.use('/', bookingRouter)
 app.use('/',userRouter)
 app.use('/',contactRouter)
 
+export const handler = ServerlessHttp(app)
 
 
 

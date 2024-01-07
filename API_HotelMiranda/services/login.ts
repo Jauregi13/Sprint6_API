@@ -1,9 +1,6 @@
 import { NextFunction , Request, Response} from "express"
 
 const jwt = require('jsonwebtoken')
-const dotenv = require('dotenv')
-
-dotenv.config()
 
 const user = 'admin'
 const password = 'admin'

@@ -1,6 +1,4 @@
 import { User, UserInterface } from "../models/User";
-import { users } from "../data/users";
-
 
 export const getUsers = async () => {
 
@@ -41,7 +39,7 @@ export const deleteUser = async (id: string) => {
 
 export const updateUser = async (user: UserInterface) => {
     
-    return await User.findOneAndUpdate({id:user.id},user)
+    return await User.findOneAndUpdate({id:user.userId},user)
 
 
 }

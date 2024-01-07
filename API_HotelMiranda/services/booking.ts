@@ -1,4 +1,5 @@
 import { Booking, BookingInterface } from "../models/Booking"
+import { Room } from "../models/Room"
 import { getRoomById } from "./room"
 
 export const getBookings = async ()=> {
@@ -13,7 +14,7 @@ export const getBookingById = async (id: string) => {
 
 export const addBooking = async (booking: BookingInterface) => {
 
-    const roomExist = await getRoomById(booking.room_type)
+    const roomExist = await Room.findById(booking.room_type)
     
     if(roomExist != null){
         console.log('funciona');
@@ -36,5 +37,5 @@ export const deleteBooking = async (id: string) => {
 
 export const updateBooking = async (booking: BookingInterface) => {
 
-    return await Booking.findOneAndUpdate({id: booking.id}, booking)
+    return await Booking.findOneAndUpdate({id: booking.bookingId}, booking)
 }

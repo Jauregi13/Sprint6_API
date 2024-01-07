@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import { Room, RoomInterface } from '../models/Room'
 
 export const getRooms = async () => {
@@ -7,7 +8,7 @@ export const getRooms = async () => {
 
 export const getRoomById = async (id: string) => {
     
-    return await Room.findOne({id: id}).exec()
+    return await Room.findById(id).exec()
 }
 
 export const getRoomsAvailable = async () => {
@@ -55,7 +56,7 @@ export const updateRoom = async (room: RoomInterface) => {
 
     try {
                 
-        return await Room.findOneAndUpdate({id: room.id}, {room_type : room.room_type})
+        return await Room.findOneAndUpdate({id: room.roomId}, {room_type : room.room_type})
         
     } catch (error) {
         

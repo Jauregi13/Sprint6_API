@@ -20,7 +20,7 @@ export const addReview = async (review: ContactInterface) => {
 
 export const updateReview = async (review : ContactInterface) => {
 
-    return await Contact.findOneAndUpdate({id: review.id},{status: review.status})
+    return await Contact.findOneAndUpdate({id: review.reviewId},{status: review.published})
 
 }
 

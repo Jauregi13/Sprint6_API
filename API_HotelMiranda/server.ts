@@ -2,12 +2,11 @@ const mongoose = require('mongoose')
 const port = 3000
 import { app } from './app'
 
-
 app.listen(port, async () => {
 
   try {
 
-    const connectionMongo = mongoose.connect('mongodb://127.0.0.1:27017/HotelMiranda_API')
+    const connectionMongo = mongoose.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.PASSWORD_MONGO}@hotelmiranda.a50ntpt.mongodb.net`)
 
     if(connectionMongo){
       

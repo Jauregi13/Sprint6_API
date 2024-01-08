@@ -4,9 +4,9 @@ const express = require('express')
 
 const router = express.Router()
 
-router.get('/users',(req: Request, res: Response) => {
+router.get('/users', async (req: Request, res: Response) => {
 
-    res.json(getUsers())
+   await res.json(getUsers())
 })
 
 router.get('/users/:id', async (req: Request, res: Response) => {

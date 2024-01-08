@@ -4,12 +4,12 @@ import { Contact, ContactInterface } from "../models/Contact";
 export const getContacts = async () => {
 
 
-    return Contact.find().exec()
+    return await Contact.find().exec()
 }
 
-export const getContactById = (id : string) => {
+export const getContactById = async (id : string) => {
 
-    return Contact.findOne({id: id}).exec()
+    return await Contact.findOne({id: id}).exec()
 }
 
 export const addReview = async (review: ContactInterface) => {

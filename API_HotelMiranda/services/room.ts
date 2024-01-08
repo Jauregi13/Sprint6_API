@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import { Room, RoomInterface } from '../models/Room'
 
 export const getRooms = async () => {

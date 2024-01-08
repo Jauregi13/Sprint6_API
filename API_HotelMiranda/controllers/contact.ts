@@ -4,9 +4,9 @@ const express = require('express')
 
 const router = express.Router()
 
-router.get('/contacts', (req: Request, res: Response) => {
+router.get('/contacts', async (req: Request, res: Response) => {
 
-    res.send(getContacts())
+    await res.send(getContacts())
 })
 
 router.get('/contacts/:id', async (req: Request, res: Response) => {

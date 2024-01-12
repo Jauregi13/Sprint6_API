@@ -1,9 +1,11 @@
 import { NextFunction , Request, Response} from "express"
 
 const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
+dotenv.config({ path: `.env.local`, override: true })
 
-const user = 'admin'
-const password = 'admin'
+const user = process.env.USER_DASHBOARD
+const password = process.env.PASSWORD_DASHBOARD
 
 export interface User {
     user : string
@@ -15,7 +17,7 @@ export const signToken = (username : User) : string | undefined => {
     
     if(username.user === user && username.password === password){
                 
-        return jwt.sign(username,process.env.TOKEN_SECRET, { expiresIn: 300})
+        return jwt.sign(username,process.env.TOKEN_SECRET)
     } 
 }
 

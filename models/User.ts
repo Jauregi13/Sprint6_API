@@ -6,6 +6,7 @@ export interface UserInterface {
 
     userId: string
     name: string
+    userImage: string
     email: string
     start_date: Date
     description: string
@@ -17,6 +18,7 @@ const UserSchema = new mongoose.Schema({
 
     userId: String,
     name: String,
+    userImage: String,
     email: String,
     start_date: Date,
     description: String,

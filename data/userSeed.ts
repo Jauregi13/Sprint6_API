@@ -1,6 +1,7 @@
 
 import { faker } from "@faker-js/faker"; 
 import { UserInterface, User } from "../models/User";
+import { format } from "path";
 
 
 const randomUser = () : UserInterface => {
@@ -9,10 +10,11 @@ const randomUser = () : UserInterface => {
 
         userId: faker.string.numeric(5),
         name: faker.person.fullName(),
+        userImage: faker.image.avatar(),
         email: faker.internet.email(),
         start_date: faker.date.past(),
         description: faker.lorem.paragraph(),
-        contact: faker.phone.number(),
+        contact: faker.helpers.fromRegExp('[6-9][0-9]{2} [0-9]{3} [0-9]{3}'),
         active: faker.datatype.boolean()
 
     }
@@ -21,6 +23,8 @@ const randomUser = () : UserInterface => {
 }
 
 export const seedUser = async () => {
+
+    await User.deleteMany()
 
     const users : UserInterface[] = faker.helpers.multiple(randomUser, {
         count: 15

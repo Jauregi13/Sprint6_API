@@ -4,17 +4,18 @@ import { getRoomById } from "./room"
 
 export const getBookings = async ()=> {
 
-    return await Booking.find().exec()
+    return await Booking.find().populate('room').exec()
+    
 }
 
 export const getBookingById = async (id: string) => {
 
-    return await Booking.findOne({id: id}).populate('room_type').exec()
+    return await Booking.findOne({id: id}).populate('room').exec()
 }
 
 export const addBooking = async (booking: BookingInterface) => {
 
-    const roomExist = await Room.findById(booking.room_type)
+    const roomExist = await Room.findById(booking.room)
     
     if(roomExist != null){
         console.log('funciona');

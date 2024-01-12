@@ -36,6 +36,8 @@ const randomRoom = () : RoomInterface => {
 
 export const seedRoom = async () => {
 
+    await Room.deleteMany()
+
     const rooms : RoomInterface[] = faker.helpers.multiple(randomRoom, {
         count: 15
     }) 

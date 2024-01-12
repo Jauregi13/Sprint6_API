@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/users', async (req: Request, res: Response) => {
 
-   await res.json(getUsers())
+    res.json(await getUsers())
 })
 
 router.get('/users/:id', async (req: Request, res: Response) => {

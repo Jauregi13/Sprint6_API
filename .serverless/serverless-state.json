@@ -13,7 +13,9 @@
       "environment": {
         "TOKEN_SECRET": "4a01d21b968cbc30911b1ece8dd18e6650f0adcf76327f9c5425468f7a418cee7681f90435fda05e4be96a54ef36b662437d52538ac2bd1eecfb4347db5f3e1d",
         "USER_MONGO": "jjauregideveloper",
-        "PASSWORD_MONGO": "BqwLcpjQnTcPjHuL"
+        "PASSWORD_MONGO": "BqwLcpjQnTcPjHuL",
+        "USER_DASHBOARD": "admin",
+        "PASSWORD_DASHBOARD": "admin"
       },
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -179,7 +181,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/miranda-service/dev/1704845222602-2024-01-10T00:07:02.602Z/miranda-service.zip"
+                "S3Key": "serverless/miranda-service/dev/1705005794590-2024-01-11T20:43:14.590Z/miranda-service.zip"
               },
               "Handler": "dist/lambda.handler",
               "Runtime": "nodejs18.x",
@@ -190,7 +192,9 @@
                 "Variables": {
                   "TOKEN_SECRET": "4a01d21b968cbc30911b1ece8dd18e6650f0adcf76327f9c5425468f7a418cee7681f90435fda05e4be96a54ef36b662437d52538ac2bd1eecfb4347db5f3e1d",
                   "USER_MONGO": "jjauregideveloper",
-                  "PASSWORD_MONGO": "BqwLcpjQnTcPjHuL"
+                  "PASSWORD_MONGO": "BqwLcpjQnTcPjHuL",
+                  "USER_DASHBOARD": "admin",
+                  "PASSWORD_DASHBOARD": "admin"
                 }
               },
               "Role": {
@@ -204,14 +208,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionw2DALO18oizp4ACDVqC0GynJt0MdUH269Aveg3m9k": {
+          "AppLambdaVersionXGBbGWCnxOg1EsG94kRrfqnAwt0ezAB7sQmynyL0ro": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "AkbiE6BkzOgtf4A3i0+MILenspc9hoks1aMJqjMwnyg="
+              "CodeSha256": "D32YM7Rans0do5CJbzfPQzEefxEGh+nxki2mtGEj1WY="
             }
           },
           "ApiGatewayRestApi": {
@@ -429,7 +433,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1704845174680": {
+          "ApiGatewayDeployment1705005724614": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -494,7 +498,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionw2DALO18oizp4ACDVqC0GynJt0MdUH269Aveg3m9k"
+              "Ref": "AppLambdaVersionXGBbGWCnxOg1EsG94kRrfqnAwt0ezAB7sQmynyL0ro"
             },
             "Export": {
               "Name": "sls-miranda-service-dev-AppLambdaFunctionQualifiedArn"
@@ -675,7 +679,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionw2DALO18oizp4ACDVqC0GynJt0MdUH269Aveg3m9k"
+        "versionLogicalId": "AppLambdaVersionXGBbGWCnxOg1EsG94kRrfqnAwt0ezAB7sQmynyL0ro"
       }
     },
     "configValidationMode": "warn",
@@ -695,7 +699,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/miranda-service/dev/code-artifacts",
         "artifact": "D:\\OXYGEN Academy\\Training\\Sprint6_API\\.serverless\\miranda-service.zip",
-        "artifactDirectoryName": "serverless/miranda-service/dev/1704845222602-2024-01-10T00:07:02.602Z"
+        "artifactDirectoryName": "serverless/miranda-service/dev/1705005794590-2024-01-11T20:43:14.590Z"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -709,7 +713,7 @@
     "artifact": "D:\\OXYGEN Academy\\Training\\Sprint6_API\\.serverless\\miranda-service.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/miranda-service/dev/1704845222602-2024-01-10T00:07:02.602Z",
+    "artifactDirectoryName": "serverless/miranda-service/dev/1705005794590-2024-01-11T20:43:14.590Z",
     "artifact": "miranda-service.zip"
   }
 }

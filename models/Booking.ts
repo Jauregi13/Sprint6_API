@@ -6,11 +6,12 @@ export interface BookingInterface {
 
     bookingId: string
     guest: string
+    guestImage: string
     order_date: Date
     check_in: Date
     check_out: Date
     special_request: string
-    room_type: mongoose.Types.ObjectId
+    room: mongoose.Types.ObjectId
     status: string
 
 }
@@ -19,11 +20,12 @@ const BookingSchema = new mongoose.Schema({
 
     bookingId: String,
     guest: String,
+    guestImage: String,
     order_date: Date,
     check_in: Date,
     check_out: Date,
     special_request: String,
-    room_type: {
+    room: {
         type: mongoose.Types.ObjectId,
         ref: 'Room'
     },

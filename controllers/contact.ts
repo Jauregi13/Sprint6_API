@@ -6,14 +6,14 @@ const router = express.Router()
 
 router.get('/contacts', async (req: Request, res: Response) => {
 
-    await res.send(getContacts())
+    res.json(await getContacts())
 })
 
 router.get('/contacts/:id', async (req: Request, res: Response) => {
 
     const review = await getContactById(req.params.id)
     if(review){
-        res.send(review)
+        res.json(review)
     }
     else {
         res.status(406).send('No existe el review con ese id')

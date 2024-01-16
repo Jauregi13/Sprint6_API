@@ -10,7 +10,7 @@ export const getBookings = async ()=> {
 
 export const getBookingById = async (id: string) => {
 
-    return await Booking.findOne({id: id}).populate('room').exec()
+    return await Booking.findOne({bookingId: id}).populate('room').exec()
 }
 
 export const addBooking = async (booking: BookingInterface) => {

@@ -7,6 +7,9 @@ export interface ContactInterface {
     date: Date
     customer: string
     customerImage: string
+    email: string
+    phone: string
+    subject: string
     comment: string
     published: boolean
 
@@ -18,6 +21,9 @@ const ContactSchema = new mongoose.Schema({
     date: Date,
     customer: String,
     customerImage: String,
+    email: String,
+    phone: String,
+    subject: String,
     comment: String,
     published: {
         type: Boolean,

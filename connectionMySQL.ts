@@ -7,8 +7,8 @@ export const connectionMySQL = async () => {
 
 
     try {
-
-        await mysql.createConnection({
+        
+        const connection =  await mysql.createConnection({
             host: 'localhost',
             port: 3306,
             user: 'root',
@@ -18,6 +18,7 @@ export const connectionMySQL = async () => {
         
         console.log('connected to DB');
         
+        return connection
 
         
     } catch (error) {

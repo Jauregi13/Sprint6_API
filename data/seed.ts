@@ -5,17 +5,17 @@ import { seedRoom } from "./roomSeed";
 import { seedUser } from "./userSeed";
 import { seedBooking } from "./bookingSeed";
 import { seedContact } from "./contactSeed";
-import { connectionMongo } from "../connectionMongo";
-
+import { connectionMySQL } from "../connectionMySQL";
 const seed = async () => {
 
 
-    await connectionMongo()
-    await seedRoom()
-    await seedUser()
-    await seedBooking()
-    await seedContact()
-    await mongoose.disconnect()
+    const connection = await connectionMySQL()
+    await seedRoom(connection)
+    await seedUser(connection)
+    await seedBooking(connection)
+    await seedContact(connection)
+    //await mongoose.disconnect()
+    await connection?.end()
 
 }
 

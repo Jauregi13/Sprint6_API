@@ -5,19 +5,19 @@ import { Room, RoomRowData } from "../models/Room";
 import mysql, { FieldPacket }from 'mysql2/promise'
 
 
-const bookingTable = `CREATE TABLE IF NOT EXISTS BOOKING (
+const bookingTable = `CREATE TABLE IF NOT EXISTS BOOKINGS (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
-                        bookingId INT(5) UNIQUE,
+                        booking_id INT(5) UNIQUE,
                         guest varchar(30),
-                        guestImage varchar(255),
+                        guest_image varchar(255),
                         order_date DATETIME,
                         check_in DATETIME,
                         check_out DATETIME,
                         special_request VARCHAR(255),
-                        roomId INT,
+                        room_id INT,
                         status ENUM('Check In','Check Out','In Progress'),
-                        CONSTRAINT fk_booking_room FOREIGN KEY (roomId) REFERENCES room(id)
+                        CONSTRAINT fk_booking_room FOREIGN KEY (room_id) REFERENCES rooms(id)
                         ON DELETE CASCADE ON UPDATE CASCADE)`
 
 
@@ -28,7 +28,7 @@ const randomBooking = async (connection : mysql.Connection | undefined) : Promis
     const check_out = faker.date.soon({ refDate: check_in, days: 4})
 
     //Conseguir todos los ids de los rooms
-    const queryRooms : [RoomRowData[], FieldPacket[]] | undefined = await connection?.query<RoomRowData[]>('SELECT id FROM `room`')
+    const queryRooms : [RoomRowData[], FieldPacket[]] | undefined = await connection?.query<RoomRowData[]>('SELECT id FROM `rooms`')
     const roomIds : number[] = []
 
     if(queryRooms){
@@ -68,33 +68,21 @@ export const seedBooking = async (connection : mysql.Connection | undefined) => 
 
         await connection?.query(bookingTable)
 
-        await connection?.query('DELETE FROM BOOKING')
-
-        let queryBooking = `INSERT INTO BOOKING (bookingId,guest,guestImage,order_date,check_in,check_out,special_request,
-                            roomId,status) VALUES `
-        
-        let insertValues = []
+        await connection?.query('DELETE FROM BOOKINGS')
 
         for (let index = 0; index < 10; index++) {
+
+            const queryBooking = `INSERT INTO BOOKINGS (booking_id,guest,guest_image,order_date,check_in,check_out,special_request,
+                room_id,status) VALUES (?,?,?,?,?,?,?,?,?);`
             
             const booking : BookingInterface = await randomBooking(connection)
 
             const bookingValues = [booking.bookingId,booking.guest,booking.guestImage,booking.order_date,booking.check_in,
                                     booking.check_out,booking.special_request,booking.roomId,booking.status]
 
-            insertValues.push(...bookingValues)
+            await connection?.execute(queryBooking,bookingValues)
 
-            queryBooking += `(?,?,?,?,?,?,?,?,?)`
-
-            if(index == 9){
-                queryBooking += ';'
-            }
-            else {
-                queryBooking += ', '
-            }
         }
-
-        await connection?.execute(queryBooking,insertValues)
 
         /*await Booking.deleteMany()
 

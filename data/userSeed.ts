@@ -3,12 +3,12 @@ import { faker } from "@faker-js/faker";
 import { UserInterface, User } from "../models/User";
 import mysql from 'mysql2/promise'
 
-const userTable = `CREATE TABLE IF NOT EXISTS USER (
+const userTable = `CREATE TABLE IF NOT EXISTS USERS (
 
                     id INT PRIMARY KEY AUTO_INCREMENT,
-                    userId varchar(5),
+                    user_id varchar(5),
                     name varchar(30),
-                    userImage varchar(255),
+                    user_image varchar(255),
                     email varchar(255),
                     start_date DATE,
                     description varchar(255),
@@ -41,32 +41,22 @@ export const seedUser = async (connection : mysql.Connection | undefined) => {
     
       await connection?.query(userTable)
 
-      await connection?.query(`DELETE FROM USER`)
+      await connection?.query(`DELETE FROM USERS`)
 
-      let insertUser = `INSERT INTO USER (userId,name,userImage,email,start_date,description,contact,active) VALUES `
-      let insertValues = []
 
       for (let index = 0; index < 15; index++) {
+
+        const insertUser = `INSERT INTO USERS (user_id,name,user_image,email,start_date,description,contact,active) 
+                            VALUES (?,?,?,?,?,?,?,?);`
         
         const user : UserInterface = randomUser()        
 
         const userValues = [user.userId,user.name,user.userImage,user.email,user.start_date,
                             user.description,user.contact,user.active]
 
-        insertUser += `(?,?,?,?,?,?,?,?)`
-
-        insertValues.push(...userValues)
-
-        if(index == 14){
-            insertUser += ';'
-        }
-        else {
-            insertUser += ', '
-        }
+        await connection?.execute(insertUser, userValues)
       }       
 
-      await connection?.execute(insertUser, insertValues)
-      
         
     } catch (error) {
         

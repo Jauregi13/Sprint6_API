@@ -4,10 +4,10 @@ import { faker } from "@faker-js/faker";
 import { RoomInterface, Room, RoomRowData } from "../models/Room";
 import mysql, {FieldPacket } from 'mysql2/promise'
 
-const roomTable = `CREATE TABLE IF NOT EXISTS ROOM (
+const roomTable = `CREATE TABLE IF NOT EXISTS ROOMS (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
-                        roomId varchar(5),
+                        room_id varchar(5),
                         room_type enum('Single Bed', 'Double Bed', 'Double Superior', 'Suite'),
                         room_number INT(3),
                         description varchar(255),
@@ -56,34 +56,22 @@ export const seedRoom = async (connection : mysql.Connection | undefined) => {
 
         await connection?.query(roomTable)
 
-        await connection?.query('DELETE FROM ROOM')
-
-        let insertRoom = `INSERT INTO ROOM (roomId,room_type,room_number,description,amenities,cancellation,price,offer,available) 
-                            VALUES `
-        let insertValues = []
+        await connection?.query('DELETE FROM ROOMS')
 
         for (let index = 0; index < 15; index++) {
+
+            const insertRoom = `INSERT INTO ROOMS (room_id,room_type,room_number,description,amenities,cancellation,price,offer,available) 
+                            VALUES (?,?,?,?,?,?,?,?,?);`
 
             const room : RoomInterface = randomRoom()
 
             const roomValues = [room.roomId,room.room_type,room.room_number,room.description,room.amenities,
                                 room.cancellation,room.price,room.offer,room.available]
-
-            insertRoom += `(?,?,?,?,?,?,?,?,?)`
-
-            insertValues.push(...roomValues)
-
-            if(index == 14){
-                insertRoom += `;`
-            }
-            else {
-                insertRoom += ', '
-            }
             
+            await connection?.execute(insertRoom,roomValues)
+   
         }
 
-        await connection?.execute(insertRoom,insertValues)
-        
     } catch (error) {
         
         console.error(error);

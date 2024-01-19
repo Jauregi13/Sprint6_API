@@ -5,13 +5,13 @@ import { Contact, ContactInterface } from "../models/Contact";
 import mysql from 'mysql2/promise'
 
 
-const contactTable = `CREATE TABLE IF NOT EXISTS CONTACT (
+const contactTable = `CREATE TABLE IF NOT EXISTS CONTACTS (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
-                        reviewId INT(5) UNIQUE,
+                        review_id INT(5) UNIQUE,
                         date DATE,
                         customer VARCHAR(30),
-                        customerImage VARCHAR(255),
+                        customer_image VARCHAR(255),
                         email VARCHAR(255),
                         phone VARCHAR(11),
                         subject VARCHAR(255),
@@ -46,31 +46,23 @@ export const seedContact = async (connection : mysql.Connection | undefined) => 
 
         await connection?.query(contactTable)
 
-        await connection?.query(`DELETE FROM USER`)
-
-        let queryContact = `INSERT INTO CONTACT (reviewId,date,customer,customerImage,email,phone,subject,comment,published) VALUES `
-        let insertValues = []
+        await connection?.query(`DELETE FROM CONTACTS`)
 
         for (let index = 0; index < 15; index++) {
+
+            const queryContact = `INSERT INTO CONTACTS (review_id,date,customer,customer_image,email,phone,subject,comment,published) 
+                                VALUES (?,?,?,?,?,?,?,?,?);`
             
             const contact : ContactInterface = randomReview()        
 
             const contactValues = [contact.reviewId,contact.date,contact.customer,contact.customerImage,contact.email,
                                 contact.phone,contact.subject,contact.comment,contact.published]
 
-            queryContact += `(?,?,?,?,?,?,?,?,?)`
+            await connection?.execute(queryContact, contactValues)
 
-            insertValues.push(...contactValues)
-
-            if(index == 14){
-                queryContact += ';'
-            }
-            else {
-                queryContact += ', '
-            }
         }         
 
-        await connection?.execute(queryContact, insertValues)
+        
 
 
         /*await Contact.deleteMany()

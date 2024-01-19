@@ -5,9 +5,9 @@ import { RowDataPacket } from "mysql2"
 
 export interface UserInterface {
 
-    userId: string
+    user_id: string
     name: string
-    userImage: string
+    user_image: string
     email: string
     start_date: Date
     description: string
@@ -18,9 +18,9 @@ export interface UserInterface {
 export interface UserRowData extends RowDataPacket {
 
         id: number
-        userId: string
+        user_id: string
         name: string
-        userImage: string
+        user_image: string
         email: string
         start_date: Date
         description: string

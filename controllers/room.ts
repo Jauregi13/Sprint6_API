@@ -38,7 +38,7 @@ router.post('/rooms', async (req: Request, res: Response) => {
     
         res.send('Habitación añadida correctamente')
     } catch (error) {
-        res.status(500).send('Error al añadir habitación');
+        res.status(500).send('Error al añadir habitación: ' + error);
     }
     
 })

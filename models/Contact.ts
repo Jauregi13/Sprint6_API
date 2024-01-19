@@ -4,10 +4,10 @@ import { RowDataPacket } from "mysql2"
 
 export interface ContactInterface {
 
-    reviewId: string
+    review_id: string
     date: Date
     customer: string
-    customerImage: string
+    customer_image: string
     email: string
     phone: string
     subject: string
@@ -19,10 +19,10 @@ export interface ContactInterface {
 export interface ContactRowData extends RowDataPacket {
 
     id: number
-    reviewId: string
+    review_id: string
     date: Date
     customer: string
-    customerImage: string
+    customer_image: string
     email: string
     phone: string
     subject: string

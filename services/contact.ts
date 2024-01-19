@@ -6,7 +6,7 @@ import { Contact, ContactInterface, ContactRowData } from "../models/Contact";
 export const getContacts = async () => {
 
     const connection = await connectionDB()
-    const query : [ContactRowData[], FieldPacket[]] | undefined = await connection?.query<ContactRowData[]>('SELECT * FROM CONTACT')
+    const query : [ContactRowData[], FieldPacket[]] | undefined = await connection?.query<ContactRowData[]>('SELECT * FROM CONTACTS')
     await connection?.end()
     if(query){
         return query[0]
@@ -17,7 +17,7 @@ export const getContacts = async () => {
 export const getContactById = async (id : string) => {
 
     const connection = await connectionDB()
-    const query = 'SELECT * FROM CONTACT WHERE reviewId = ?'
+    const query = 'SELECT * FROM CONTACTS WHERE review_id = ?'
     const parameter = [id]
     const executeQuery : [ContactRowData[], FieldPacket[]] | undefined = await connection?.execute<ContactRowData[]>(query,parameter)
     await connection?.end()
@@ -32,10 +32,10 @@ export const getContactById = async (id : string) => {
 export const addReview = async (review: ContactInterface) => {
 
         const connection = await connectionDB()
-        const query = `INSERT INTO CONTACT (reviewId,date,customer,customerImage,email,phone,subject,comment,published) VALUES
+        const query = `INSERT INTO CONTACTS (review_id,date,customer,customer_image,email,phone,subject,comment,published) VALUES
                         (?,?,?,?,?,?,?,?,?);`
         
-        const reviewValues = [review.reviewId,new Date(review.date),review.customer,review.customerImage,review.email,
+        const reviewValues = [review.review_id,new Date(review.date),review.customer,review.customer_image,review.email,
                             review.phone,review.subject,review.comment,review.published]
         
         await connection?.execute<ResultSetHeader>(query,reviewValues)
@@ -47,11 +47,12 @@ export const addReview = async (review: ContactInterface) => {
 export const updateReview = async (review : ContactInterface) => {
 
     const connection = await connectionDB()
-    const query = `UPDATE CONTACT SET date = ?, customer = ?, customerImage = ?, email = ?,
-                    phone = ?, subject = ?, comment = ?, published = ? WHERE reviewId = ?`
+    
+    const query = `UPDATE CONTACTS SET date = ?, customer = ?, customer_image = ?, email = ?,
+                    phone = ?, subject = ?, comment = ?, published = ? WHERE review_id = ?`
 
-    const reviewValues = [new Date(review.date),review.customer,review.customerImage,review.email,
-                            review.phone,review.subject,review.comment, review.published, review.reviewId]
+    const reviewValues = [new Date(review.date),review.customer,review.customer_image,review.email,
+                            review.phone,review.subject,review.comment, review.published, review.review_id]
     
     await connection?.execute<ResultSetHeader>(query,reviewValues)
 

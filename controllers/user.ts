@@ -41,11 +41,11 @@ router.post('/users',async (req: Request, res: Response) => {
         
     } catch (error) {
         
-        res.status(500).send('Error al añadir usuario');
+        res.status(500).send('Error al añadir usuario: ' + error);
     }
 })
 
-router.patch('/users',async (req: Request, res: Response) => {
+router.put('/users',async (req: Request, res: Response) => {
 
     try {
         
@@ -53,7 +53,7 @@ router.patch('/users',async (req: Request, res: Response) => {
         const userUpdated = await updateUser(req.body)
         
 
-        if(userUpdated != null){
+        if(userUpdated?.affectedRows === 1){
             res.send('Usuario actualizado correctamente')
         }
         else {
@@ -73,7 +73,7 @@ router.delete('/users', async (req: Request, res: Response) => {
 
         const userDeleted = await deleteUser(req.body.id)
 
-        if(userDeleted != null){
+        if(userDeleted?.affectedRows == 1){
             res.send('Usuario eliminado correctamente')
         }
         else {
@@ -81,7 +81,7 @@ router.delete('/users', async (req: Request, res: Response) => {
         }
         
     } catch (error) {
-        res.status(500).send('Error al eliminar el usuario');
+        res.status(500).send('Error al eliminar el usuario: ' + error);
     }
 
     

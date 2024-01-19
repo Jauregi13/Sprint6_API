@@ -65,7 +65,7 @@ export const seedRoom = async (connection : mysql.Connection | undefined) => {
 
             const room : RoomInterface = randomRoom()
 
-            const roomValues = [room.roomId,room.room_type,room.room_number,room.description,room.amenities,
+            const roomValues = [room.room_id,room.room_type,room.room_number,room.description,room.amenities,
                                 room.cancellation,room.price,room.offer,room.available]
             
             await connection?.execute(insertRoom,roomValues)

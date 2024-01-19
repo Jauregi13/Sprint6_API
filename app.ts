@@ -15,7 +15,11 @@ const cors = require('cors')
 const port = 3000
 
 
-connectionMySQL()
+export const connectionDB = async () => {
+
+    return await connectionMySQL()
+} 
+
 
 app.use(cors())
 

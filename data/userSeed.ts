@@ -63,7 +63,7 @@ export const seedUser = async (connection : mysql.Connection | undefined) => {
         else {
             insertUser += ', '
         }
-      }         
+      }       
 
       await connection?.execute(insertUser, insertValues)
       

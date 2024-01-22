@@ -13,7 +13,7 @@ router.get('/bookings/:id', async (req : Request,res : Response) => {
 
     const booking = await getBookingById(req.params.id)
 
-    if(booking){
+    if(booking?.length !== 0){
         res.json(booking)
     }
     else {
@@ -50,7 +50,7 @@ router.post('/bookings', async (req : Request,res : Response) => {
         res.send('Reserva creada correctamente')
         
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send('Error al añadir la reserva: '+ error);
     }
     
 })
@@ -61,7 +61,7 @@ router.delete('/bookings', async (req : Request,res : Response) => {
 
         const bookingDeleted = await deleteBooking(req.body.id)
 
-        if(bookingDeleted){
+        if(bookingDeleted?.affectedRows === 1){
             res.send('Reserva eliminada correctamente')
         }
         else {
@@ -82,7 +82,7 @@ router.patch('/bookings', async (req : Request,res : Response) => {
 
         const bookingUpdated = await updateBooking(req.body)
 
-        if(bookingUpdated){
+        if(bookingUpdated?.affectedRows === 1){
             res.send('Reserva actualizada correctamente')
         }
         else {

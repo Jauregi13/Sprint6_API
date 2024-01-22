@@ -1,6 +1,7 @@
 
 import mongoose from "mongoose"
 import { Room, RoomInterface } from "./Room"
+import { RowDataPacket } from "mysql2"
 
 export interface BookingInterface {
 
@@ -13,6 +14,21 @@ export interface BookingInterface {
     special_request: string
     // Para MongoDB
     //room: mongoose.Types.ObjectId
+    roomId: number
+    status: string
+
+}
+
+export interface BookingRowData extends RowDataPacket {
+
+    id: number
+    bookingId: string
+    guest: string
+    guestImage: string
+    order_date: Date
+    check_in: Date
+    check_out: Date
+    special_request: string
     roomId: number
     status: string
 

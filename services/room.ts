@@ -56,7 +56,13 @@ export const addRoom = async (room: RoomInterface) => {
 export const deleteRoom = async (id: string) => {
 
     try {
+        const connection = await connectionDB()
+        const query = `DELETE FROM ROOMS WHERE id = ?`
+        const parameter = [id]
 
+        const result = await connection?.query<ResultSetHeader>(query,parameter)
+
+        if(result) return result[0]
         //return await Room.findOneAndDelete({id: id})
         
     } catch (error) {
@@ -69,7 +75,15 @@ export const deleteRoom = async (id: string) => {
 export const updateRoom = async (room: RoomInterface) => {
 
     try {
-                
+        const connection = await connectionDB()
+        const query = `UPDATE ROOMS SET room_type = ?, room_number = ?, description = ?, amenities = ?,
+                        cancellation = ?, price = ?, offer = ?, available = ? WHERE room_id = ?`
+        const updateValues = [room.room_type,room.room_number,room.description,JSON.stringify(room.amenities),
+                            room.cancellation,room.price,room.offer,room.available, room.room_id]
+        
+        const result = await connection?.query<ResultSetHeader>(query,updateValues)
+        
+        if(result) return result[0]
         //return await Room.findOneAndUpdate({id: room.roomId}, {room_type : room.room_type})
         
     } catch (error) {

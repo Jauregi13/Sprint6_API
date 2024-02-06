@@ -22,7 +22,7 @@ const roomTable = `CREATE TABLE IF NOT EXISTS ROOMS (
 const randomRoom = () : RoomInterface => {
 
     return {
-        roomId: faker.string.numeric(5),
+        room_id: faker.string.numeric(5),
         room_type: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Superior', 'Suite']),
         room_number: faker.number.int({min: 100, max: 599}).toString(),
         description: faker.lorem.paragraph(),

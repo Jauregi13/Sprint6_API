@@ -21,9 +21,9 @@ const randomUser = () : UserInterface => {
 
     return {
 
-        userId: faker.string.numeric(5),
+        user_id: faker.string.numeric(5),
         name: faker.person.fullName().replace('\'',' '),
-        userImage: faker.image.avatar(),
+        user_image: faker.image.avatar(),
         email: faker.internet.email(),
         start_date: faker.date.past(),
         description: faker.person.jobDescriptor(),
@@ -51,7 +51,7 @@ export const seedUser = async (connection : mysql.Connection | undefined) => {
         
         const user : UserInterface = randomUser()        
 
-        const userValues = [user.userId,user.name,user.userImage,user.email,user.start_date,
+        const userValues = [user.user_id,user.name,user.user_image,user.email,user.start_date,
                             user.description,user.contact,user.active]
 
         await connection?.execute(insertUser, userValues)

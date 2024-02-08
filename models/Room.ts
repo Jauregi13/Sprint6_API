@@ -2,13 +2,18 @@
 import mongoose from "mongoose"
 import { RowDataPacket } from "mysql2"
 
+interface AmenitiesInterface {
+    value: string
+    image_name: string
+}
+
 export interface RoomInterface{
 
     room_id: string
     room_type: string
     room_number: string
     description: string
-    amenities: string[]
+    amenities: AmenitiesInterface[]
     cancellation: string
     price: number
     offer: number

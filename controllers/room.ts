@@ -38,7 +38,7 @@ router.post('/rooms', async (req: Request, res: Response) => {
     
         res.send('Habitación añadida correctamente')
     } catch (error) {
-        res.status(500).send('Error al añadir habitación');
+        res.status(500).send('Error al añadir habitación: ' + error);
     }
     
 })
@@ -49,7 +49,7 @@ router.delete('/rooms', async (req: Request, res: Response) => {
 
         const roomDeleted = await deleteRoom(req.body.id)
 
-        if(roomDeleted != null){
+        if(roomDeleted?.affectedRows === 1){
             res.send('Habitación eliminada correctamente')
         }
         else {
@@ -69,7 +69,7 @@ router.patch('/rooms', async (req: Request, res: Response) => {
 
         const roomUpdated = await updateRoom(req.body)
         
-        if(roomUpdated != null){
+        if(roomUpdated?.affectedRows === 1){
             res.send('Habitación actualizada correctamente')
         }
         else {

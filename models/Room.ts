@@ -4,12 +4,12 @@ import { RowDataPacket } from "mysql2"
 
 interface AmenitiesInterface {
     value: string
-    image_name : string
+    image_name: string
 }
 
 export interface RoomInterface{
 
-    roomId: string
+    room_id: string
     room_type: string
     room_number: string
     description: string
@@ -24,7 +24,7 @@ export interface RoomInterface{
 export interface RoomRowData extends RowDataPacket{
 
     id: number
-    roomId: string
+    room_id: string
     room_type: string
     room_number: string
     description: string

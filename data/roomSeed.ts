@@ -22,7 +22,7 @@ const roomTable = `CREATE TABLE IF NOT EXISTS ROOMS (
 const randomRoom = () : RoomInterface => {
 
     return {
-        roomId: faker.string.numeric(5),
+        room_id: faker.string.numeric(5),
         room_type: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Superior', 'Suite']),
         room_number: faker.number.int({min: 100, max: 599}).toString(),
         description: faker.lorem.paragraph(),
@@ -104,7 +104,7 @@ export const seedRoom = async (connection : mysql.Connection | undefined) => {
 
             const room : RoomInterface = randomRoom()
 
-            const roomValues = [room.roomId,room.room_type,room.room_number,room.description,room.amenities,
+            const roomValues = [room.room_id,room.room_type,room.room_number,room.description,room.amenities,
                                 room.cancellation,room.price,room.offer,room.available]
             
             await connection?.execute(insertRoom,roomValues)

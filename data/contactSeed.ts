@@ -25,10 +25,10 @@ const randomReview = () : ContactInterface => {
 
     return {
 
-        reviewId: faker.string.numeric(5),
+        review_id: faker.string.numeric(5),
         date: faker.date.past(),
         customer: faker.person.fullName(),
-        customerImage: faker.image.avatar(),
+        customer_image: faker.image.avatar(),
         email: faker.internet.email(),
         phone: faker.helpers.fromRegExp('[6-9][0-9]{2} [0-9]{3} [0-9]{3}'),
         subject: faker.lorem.sentence(),
@@ -55,7 +55,7 @@ export const seedContact = async (connection : mysql.Connection | undefined) => 
             
             const contact : ContactInterface = randomReview()        
 
-            const contactValues = [contact.reviewId,contact.date,contact.customer,contact.customerImage,contact.email,
+            const contactValues = [contact.review_id,contact.date,contact.customer,contact.customer_image,contact.email,
                                 contact.phone,contact.subject,contact.comment,contact.published]
 
             await connection?.execute(queryContact, contactValues)

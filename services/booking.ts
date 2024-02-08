@@ -82,5 +82,4 @@ export const updateBooking = async (booking: BookingInterface) => {
     const result = await connection?.query<ResultSetHeader>(query,bookingValues)
 
     if(result) return result[0]
-    //return await Booking.findOneAndUpdate({id: booking.bookingId}, booking)
 }

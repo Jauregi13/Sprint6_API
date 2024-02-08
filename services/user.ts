@@ -78,7 +78,5 @@ export const updateUser = async (user: UserInterface) => {
     const result = await connection?.query<ResultSetHeader>(query,userValues)
 
     if(result) return result[0]
-    //return await User.findOneAndUpdate({id:user.userId},user)
-
 
 }

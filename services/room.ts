@@ -19,7 +19,6 @@ export const getRoomById = async (id: string) => {
     const result = await connection?.query(query,parameter)
 
     if(result) return result[0]
-    //return await Room.findById(id).exec()
 }
 
 export const getRoomsAvailable = async () => {
@@ -84,7 +83,6 @@ export const updateRoom = async (room: RoomInterface) => {
         const result = await connection?.query<ResultSetHeader>(query,updateValues)
         
         if(result) return result[0]
-        //return await Room.findOneAndUpdate({id: room.roomId}, {room_type : room.room_type})
         
     } catch (error) {
         

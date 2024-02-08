@@ -1,8 +1,24 @@
 
 import mongoose from "mongoose"
+import { RowDataPacket } from "mysql2"
 
 export interface ContactInterface {
 
+    reviewId: string
+    date: Date
+    customer: string
+    customerImage: string
+    email: string
+    phone: string
+    subject: string
+    comment: string
+    published: boolean
+
+}
+
+export interface ContactRowData extends RowDataPacket {
+
+    id: number
     reviewId: string
     date: Date
     customer: string

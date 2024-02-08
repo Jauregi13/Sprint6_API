@@ -7,6 +7,7 @@ import { Request, Response } from 'express'
 import listEndpoints from 'express-list-endpoints'
 import { authenticateToken } from './services/login'
 import { connectionMongo } from './connectionMongo'
+import { connectionMySQL } from './connectionMySQL'
 
 const express = require('express')
 export const app = express()
@@ -14,7 +15,11 @@ const cors = require('cors')
 const port = 3000
 
 
-connectionMongo()
+export const connectionDB = async () => {
+
+    return await connectionMySQL()
+} 
+
 
 app.use(cors())
 

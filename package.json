@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "start": "nodemon app.ts",
+    "seed": "ts-node data/seed.ts",
     "test": "jest"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "express-list-endpoints": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
+    "mysql2": "^3.7.0",
     "nodemon": "^3.0.2",
     "rimraf": "^5.0.5",
     "serverless-dotenv-plugin": "^6.0.0",

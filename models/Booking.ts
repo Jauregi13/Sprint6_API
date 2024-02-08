@@ -11,7 +11,9 @@ export interface BookingInterface {
     check_in: Date
     check_out: Date
     special_request: string
-    room: mongoose.Types.ObjectId
+    // Para MongoDB
+    //room: mongoose.Types.ObjectId
+    roomId: number
     status: string
 
 }

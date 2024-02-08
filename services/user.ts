@@ -1,8 +1,16 @@
-import { User, UserInterface } from "../models/User";
+import { User, UserInterface, UserRowData } from "../models/User";
+import { connectionDB } from "../app";
+import { RoomRowData } from "../models/Room";
+import { FieldPacket } from "mysql2";
 
 export const getUsers = async () => {
 
-    return await User.find().exec()
+    const connection  = await connectionDB()
+    const query : [UserRowData[], FieldPacket[]] | undefined= await connection?.query<UserRowData[]>('SELECT * FROM `USER`')
+    if(query){
+        return query[0]
+    }
+    //return await User.find().exec()
 }
 
 export const getUserById = async (id: string) => {

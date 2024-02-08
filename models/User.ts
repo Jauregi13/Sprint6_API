@@ -1,5 +1,6 @@
 
 import mongoose from "mongoose"
+import { RowDataPacket } from "mysql2"
 
 
 export interface UserInterface {
@@ -12,6 +13,19 @@ export interface UserInterface {
     description: string
     contact: string
     active: boolean
+}
+
+export interface UserRowData extends RowDataPacket {
+
+        id: number
+        userId: string
+        name: string
+        userImage: string
+        email: string
+        start_date: Date
+        description: string
+        contact: string
+        active: boolean
 }
 
 const UserSchema = new mongoose.Schema({

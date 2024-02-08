@@ -37,6 +37,6 @@ export const deleteBooking = async (id: string) => {
 }
 
 export const updateBooking = async (booking: BookingInterface) => {
-
-    return await Booking.findOneAndUpdate({id: booking.bookingId}, booking)
+    
+    return await Booking.findOneAndUpdate({bookingId: booking.bookingId}, booking)
 }

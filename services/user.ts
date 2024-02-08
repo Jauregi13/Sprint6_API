@@ -39,7 +39,7 @@ export const deleteUser = async (id: string) => {
 
 export const updateUser = async (user: UserInterface) => {
     
-    return await User.findOneAndUpdate({id:user.userId},user)
+    return await User.findOneAndUpdate({userId:user.userId},user)
 
 
 }

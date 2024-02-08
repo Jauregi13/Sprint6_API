@@ -83,14 +83,20 @@ router.patch('/bookings', async (req : Request,res : Response) => {
         const bookingUpdated = await updateBooking(req.body)
 
         if(bookingUpdated){
-            res.send('Reserva actualizada correctamente')
+            res.json({
+                'success' : true,
+                'message' : 'Reserva actualizada correctamente'
+            })
         }
         else {
-            res.send('Id de reserva no existe')
+            res.json({
+                'success' : false,
+                'message' : 'Id de reserva no existe'
+            })
         }
         
     } catch (error) {
-        res.status(500).send('Error al actualizar la reserva')
+        res.status(500).json('Error al actualizar la reserva')
     }
 
     

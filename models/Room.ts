@@ -1,13 +1,18 @@
 
 import mongoose from "mongoose"
 
+interface AmenitiesInterface {
+    value: string
+    image_name : string
+}
+
 export interface RoomInterface{
 
     roomId: string
     room_type: string
     room_number: string
     description: string
-    amenities: string[]
+    amenities: AmenitiesInterface[]
     cancellation: string
     price: number
     offer: number

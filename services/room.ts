@@ -7,7 +7,7 @@ export const getRooms = async () => {
 
 export const getRoomById = async (id: string) => {
     
-    return await Room.findById(id).exec()
+    return await Room.findOne({roomId: id}).exec()
 }
 
 export const getRoomsAvailable = async () => {
@@ -55,7 +55,7 @@ export const updateRoom = async (room: RoomInterface) => {
 
     try {
                 
-        return await Room.findOneAndUpdate({id: room.roomId}, {room_type : room.room_type})
+        return await Room.findOneAndUpdate({roomId: room.roomId}, {room_type : room.room_type})
         
     } catch (error) {
         

@@ -12,19 +12,58 @@ const randomRoom = () : RoomInterface => {
         room_number: faker.number.int({min: 100, max: 599}).toString(),
         description: faker.lorem.paragraph(),
         amenities: faker.helpers.arrayElements(
-            ['AC',
-            'Breakfast',
-            'Cleaning',
-            'Grocery',
-            'Shop near',
-            '24/7 Online Support',
-            'Smart Security',
-            'High Speed WiFi',
-            'Kitchen',
-            'Single Bed',
-            'Towels',
-            'Strong Locker',
-            'Expert Team']),
+            [{
+                value: 'AC',
+                image_name: 'air-conditioner-icon'
+            },
+            {
+                value: 'Breakfast',
+                image_name: 'breakfast-icon'
+            },
+            {
+                value: 'Cleaning',
+                image_name: 'cleaning-icon'
+            },
+            {
+                value: 'Grocery',
+                image_name: 'grocery-icon'
+            },
+            {
+                value: 'Shop near',
+                image_name: 'shop-icon'
+            },
+            {
+                value: '24/7 Online Support',
+                image_name: 'online-support-icon'
+            },
+            {
+                value: 'Smart Security',
+                image_name: 'security-icon'
+            },
+            {
+                value: 'High Speed WiFi',
+                image_name: 'wifi-icon'
+            },
+            {
+                value: 'Kitchen',
+                image_name: 'kitchen-icon'
+            },
+            {
+                value: 'Single Bed',
+                image_name: 'bed-icon'
+            },
+            {
+                value: 'Towels',
+                image_name: 'towels-icon'
+            },
+            {
+                value: 'Strong Locker',
+                image_name: 'strong-locker-icon'
+            },
+            {
+                value: 'Expert Team',
+                image_name: 'expert-team-icon'
+            }]),
         cancellation: faker.lorem.paragraph(),
         price: parseFloat(faker.commerce.price({
             min: 50

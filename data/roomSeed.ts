@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import { RoomInterface, Room, RoomRowData } from "../models/Room";
 import mysql, {FieldPacket } from 'mysql2/promise'
 
-const roomTable = `CREATE TABLE IF NOT EXISTS ROOMS (
+const roomTable = `CREATE TABLE IF NOT EXISTS hotelmiranda_room (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
                         room_id varchar(5),
@@ -95,11 +95,11 @@ export const seedRoom = async (connection : mysql.Connection | undefined) => {
 
         await connection?.query(roomTable)
 
-        await connection?.query('DELETE FROM ROOMS')
+        await connection?.query('DELETE FROM hotelmiranda_room')
 
         for (let index = 0; index < 15; index++) {
 
-            const insertRoom = `INSERT INTO ROOMS (room_id,room_type,room_number,description,amenities,cancellation,price,offer,available) 
+            const insertRoom = `INSERT INTO hotelmiranda_room (room_id,room_type,room_number,description,amenities,cancellation,price,offer,available) 
                             VALUES (?,?,?,?,?,?,?,?,?);`
 
             const room : RoomInterface = randomRoom()

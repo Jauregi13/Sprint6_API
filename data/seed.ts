@@ -11,7 +11,7 @@ const seed = async () => {
 
     const connection = await connectionMySQL()
     await seedRoom(connection)
-    await seedUser(connection)
+    //await seedUser(connection)
     await seedBooking(connection)
     await seedContact(connection)
     //await mongoose.disconnect()

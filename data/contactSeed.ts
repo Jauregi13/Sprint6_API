@@ -5,7 +5,7 @@ import { Contact, ContactInterface } from "../models/Contact";
 import mysql from 'mysql2/promise'
 
 
-const contactTable = `CREATE TABLE IF NOT EXISTS CONTACTS (
+const contactTable = `CREATE TABLE IF NOT EXISTS hotelmiranda_contact (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
                         review_id INT(5) UNIQUE,
@@ -46,11 +46,11 @@ export const seedContact = async (connection : mysql.Connection | undefined) => 
 
         await connection?.query(contactTable)
 
-        await connection?.query(`DELETE FROM CONTACTS`)
+        await connection?.query(`DELETE FROM hotelmiranda_contact`)
 
         for (let index = 0; index < 15; index++) {
 
-            const queryContact = `INSERT INTO CONTACTS (review_id,date,customer,customer_image,email,phone,subject,comment,published) 
+            const queryContact = `INSERT INTO hotelmiranda_contact (review_id,date,customer,customer_image,email,phone,subject,comment,published) 
                                 VALUES (?,?,?,?,?,?,?,?,?);`
             
             const contact : ContactInterface = randomReview()        

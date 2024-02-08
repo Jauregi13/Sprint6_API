@@ -13,7 +13,7 @@ export const connectionMySQL = async () => {
             port: 3306,
             user: 'root',
             password: process.env.PASSWORD_MYSQL,
-            database: 'hotelmiranda'
+            database: 'hotelmiranda_django'
         })
         
         console.log('connected to DB');

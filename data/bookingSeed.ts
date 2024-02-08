@@ -5,7 +5,7 @@ import { Room, RoomRowData } from "../models/Room";
 import mysql, { FieldPacket }from 'mysql2/promise'
 
 
-const bookingTable = `CREATE TABLE IF NOT EXISTS BOOKINGS (
+const bookingTable = `CREATE TABLE IF NOT EXISTS hotelmiranda_booking (
 
                         id INT PRIMARY KEY AUTO_INCREMENT,
                         booking_id INT(5) UNIQUE,
@@ -28,7 +28,7 @@ const randomBooking = async (connection : mysql.Connection | undefined) : Promis
     const check_out = faker.date.soon({ refDate: check_in, days: 4})
 
     //Conseguir todos los ids de los rooms
-    const queryRooms : [RoomRowData[], FieldPacket[]] | undefined = await connection?.query<RoomRowData[]>('SELECT id FROM `rooms`')
+    const queryRooms : [RoomRowData[], FieldPacket[]] | undefined = await connection?.query<RoomRowData[]>('SELECT id FROM `hotelmiranda_room`')
     const roomIds : number[] = []
 
     if(queryRooms){
@@ -68,11 +68,11 @@ export const seedBooking = async (connection : mysql.Connection | undefined) => 
 
         await connection?.query(bookingTable)
 
-        await connection?.query('DELETE FROM BOOKINGS')
+        await connection?.query('DELETE FROM hotelmiranda_booking')
 
         for (let index = 0; index < 10; index++) {
 
-            const queryBooking = `INSERT INTO BOOKINGS (booking_id,guest,guest_image,order_date,check_in,check_out,special_request,
+            const queryBooking = `INSERT INTO hotelmiranda_booking (booking_id,guest,guest_image,order_date,check_in,check_out,special_request,
                 room_id,status) VALUES (?,?,?,?,?,?,?,?,?);`
             
             const booking : BookingInterface = await randomBooking(connection)

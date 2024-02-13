@@ -8,6 +8,8 @@ export interface BookingInterface {
     bookingId: string
     guest: string
     guestImage: string
+    email: string
+    phone: string
     order_date: Date
     check_in: Date
     check_out: Date

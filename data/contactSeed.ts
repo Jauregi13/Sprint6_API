@@ -31,7 +31,10 @@ const randomReview = () : ContactInterface => {
         customer_image: faker.image.avatar(),
         email: faker.internet.email(),
         phone: faker.helpers.fromRegExp('[6-9][0-9]{2} [0-9]{3} [0-9]{3}'),
-        subject: faker.lorem.sentence(),
+        subject: faker.lorem.sentence({
+            min: 3,
+            max: 5
+        }),
         comment: faker.lorem.paragraph(5),
         published: faker.datatype.boolean()
     }

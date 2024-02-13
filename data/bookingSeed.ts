@@ -51,6 +51,8 @@ const randomBooking = async (connection : mysql.Connection | undefined) : Promis
         bookingId: faker.string.numeric(5),
         guest: faker.person.fullName().replace('\'',' '),
         guestImage: faker.image.avatar(),
+        email: faker.internet.email(),
+        phone: faker.helpers.fromRegExp('[6-9][0-9]{2} [0-9]{3} [0-9]{3}'),
         order_date: order_date,
         check_in: check_in,
         check_out: check_out,
@@ -72,12 +74,12 @@ export const seedBooking = async (connection : mysql.Connection | undefined) => 
 
         for (let index = 0; index < 10; index++) {
 
-            const queryBooking = `INSERT INTO hotelmiranda_booking (booking_id,guest,guest_image,order_date,check_in,check_out,special_request,
-                room_id,status) VALUES (?,?,?,?,?,?,?,?,?);`
+            const queryBooking = `INSERT INTO hotelmiranda_booking (booking_id,guest,guest_image,email,phone,order_date,check_in,check_out,special_request,
+                room_id,status) VALUES (?,?,?,?,?,?,?,?,?,?,?);`
             
             const booking : BookingInterface = await randomBooking(connection)
 
-            const bookingValues = [booking.bookingId,booking.guest,booking.guestImage,booking.order_date,booking.check_in,
+            const bookingValues = [booking.bookingId,booking.guest,booking.guestImage, booking.email,booking.phone, booking.order_date,booking.check_in,
                                     booking.check_out,booking.special_request,booking.roomId,booking.status]
 
             await connection?.execute(queryBooking,bookingValues)

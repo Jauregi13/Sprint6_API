@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -28,7 +28,7 @@ jobs:
         run: npm run build
       
       - name: Install plugin and deploy serverless
-        uses: serverless/github-action@v3.2
+        uses: serverless deploy
         with:
           args: -c "serverless plugin install --name serverless-dotenv-plugin && serverless deploy"
           entrypoint: /bin/sh

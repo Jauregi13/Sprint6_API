@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      
       - uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -26,15 +26,3 @@ jobs:
 
       - name: Build
         run: npm run build
-      
-      - name: Install plugin and deploy serverless
-        uses: serverless deploy
-        with:
-          args: -c "serverless plugin install --name serverless-dotenv-plugin && serverless deploy"
-          entrypoint: /bin/sh
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'eu-west-3'
-          SOURCE_DIR: 'dist'

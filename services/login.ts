@@ -17,7 +17,7 @@ export const signToken = (username : User) : string | undefined => {
     
     if(username.user === user && username.password === password){
                 
-        return jwt.sign(username,process.env.TOKEN_SECRET)
+        return jwt.sign(username,process.env.SECRET_TOKEN)
     } 
 }
 
@@ -30,7 +30,7 @@ export const authenticateToken = (req : Request,res : Response,next : NextFuncti
 
         if (!token) return res.status(401).json({error: 'true', message: 'Token not exist'})
 
-        jwt.verify(token, process.env.TOKEN_SECRET as string)
+        jwt.verify(token, process.env.SECRET_TOKEN as string)
 
         next()
         

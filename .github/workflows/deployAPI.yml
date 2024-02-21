@@ -26,11 +26,6 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Install plugins of serverless
-        uses: serverless/github-action@v3.2
-        with:
-          args: npx serverless plugin install --name serverless-dotenv-plugin
       
       - name: Deploy serverless
         uses: serverless/github-action@v3.2

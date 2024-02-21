@@ -34,7 +34,6 @@ jobs:
           envkey_USER_DASHBOARD: ${{ secrets.USER_DASHBOARD }}
           envkey_PASSWORD_DASHBOARD: ${{ secrets.PASSWORD_DASHBOARD }}
           envkey_PASSWORD_MYSQL: ${{ secrets.PASSWORD_MYSQL }}
-          directory: /
           file_name: .env.local
           fail_on_empty: false
           sort_keys: false
